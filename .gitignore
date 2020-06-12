@@ -1,0 +1,5 @@
+bsp/
+build/
+toolchain/
+*.o
+*.elf
