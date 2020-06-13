@@ -1,6 +1,8 @@
-# System specific configuration
-VENDOR_ROOT = ./bsp/
+# Path you your toolchain installation, leave empty if already in system PATH
 TOOLCHAIN_ROOT = ./toolchain/bin/
+
+# Path to the STM32 codebase, make sure to update the submodule to get the code
+VENDOR_ROOT = ./bsp/
 
 ###############################################################################
 
