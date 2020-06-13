@@ -1,0 +1,3 @@
+[submodule "bsp"]
+	path = bsp
+	url = https://github.com/STMicroelectronics/STM32CubeF7
