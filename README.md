@@ -27,3 +27,4 @@ Other projects that address this problem:
 * Simply run `make` to build the project.
 * In another terminal, start the debugger backend using one of the [scripts](./scripts).
 * Run `make debug` to download the code and start debugging.
+* Optionally, open a serial terminal to view the `printf` function calls using something like `minicom -b 115200 -D /dev/tty.usbmodem14203`. 
