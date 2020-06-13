@@ -26,11 +26,18 @@ INCLUDES   = -I$(INC_DIR)
 INCLUDES  += -I$(INC_DIR)hal/
 
 # Vendor sources
+SRC_FILES += $(VENDOR_ROOT)Drivers/BSP/STM32F7xx_Nucleo_144/stm32f7xx_nucleo_144.c
 SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_adc.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_adc_ex.c
 SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_pwr.c
 SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_pwr_ex.c
 SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_rcc.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_rcc_ex.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_spi.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_dma.c
 SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_gpio.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_uart.c
 SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_cortex.c
 
 # Vendor includes
@@ -47,7 +54,7 @@ CFLAGS += -DSTM32F767xx
 CFLAGS += $(INCLUDES)
 
 # Linker Flags
-LFLAGS = -Wl,--gc-sections -Wl,-T$(LD_SCRIPT)
+LFLAGS = -Wl,--gc-sections -Wl,-T$(LD_SCRIPT) --specs=rdimon.specs
 
 ###############################################################################
 
@@ -85,4 +92,4 @@ clean:
 
 # Debug
 debug:
-	$(DB) $(TARGET_EXE)
+	$(DB) $(TARGET_ELF)
