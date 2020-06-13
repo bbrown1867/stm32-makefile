@@ -19,8 +19,8 @@ Other projects that address this problem:
 
 ### Setup
 * _GNU Make_ - Usually installed by default on Linux and macOS, so no work to do here.
-* _GNU ARM Embedded Toolchain_ - Download the toolchain and update the path at the top of the Makefile. If you've added the `bin/` directory of the toolchain to your path then just leave the path empty.
-* _STM32CubeF7 MCU Firmware Package_ - This is a submodule of this repository, so it can be downloaded by running `git submodule init && git submodule update`. However if you already have it installed on your system, skip the submodule commands and just update the path in the Makefile to point to your copy.
+* _GNU ARM Embedded Toolchain_ - [Download](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads) the toolchain and update the `TOOLCHAIN_ROOT` variable at the top of the Makefile. If you've added the `bin/` directory of the toolchain to your system `PATH` then you can leave this variable blank.
+* _STM32CubeF7 MCU Firmware Package_ - This is a submodule of this repository, so it can be downloaded by running `git submodule init && git submodule update`. However if you already have it installed on your system, skip the submodule commands and just update the `VENDOR_ROOT` variable in the Makefile to point to your copy.
 * _ST-Link or OpenOCD_ - For debugging, you will need software that knows how to talk to your debug hardware over USB. On the Nucleo-144 board, there is an ST-Link debugger. You can talk to it using [ST-Link tools](https://github.com/stlink-org/stlink) or [OpenOCD](https://sourceforge.net/p/openocd/code/ci/master/tree/). On Linux I was able to build both of these packages from source easily following the instructions. On macOS both packages were downloadable in binary form using `brew install stlink openocd`.
 
 ### Build and Debug
