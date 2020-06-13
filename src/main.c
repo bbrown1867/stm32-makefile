@@ -33,13 +33,13 @@ int main(void)
     BSP_LED_Init(LED3);
 
     /* Configure UART for printf */
-    UartHandle.Instance          = USART3;
-    UartHandle.Init.BaudRate     = 115200;
-    UartHandle.Init.WordLength   = UART_WORDLENGTH_8B;
-    UartHandle.Init.StopBits     = UART_STOPBITS_1;
-    UartHandle.Init.Parity       = UART_PARITY_NONE;
-    UartHandle.Init.HwFlowCtl    = UART_HWCONTROL_NONE;
-    UartHandle.Init.Mode         = UART_MODE_TX_RX;
+    UartHandle.Instance = USART3;
+    UartHandle.Init.BaudRate = 115200;
+    UartHandle.Init.WordLength = UART_WORDLENGTH_8B;
+    UartHandle.Init.StopBits = UART_STOPBITS_1;
+    UartHandle.Init.Parity = UART_PARITY_NONE;
+    UartHandle.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+    UartHandle.Init.Mode = UART_MODE_TX_RX;
     UartHandle.Init.OverSampling = UART_OVERSAMPLING_16;
     if (HAL_UART_Init(&UartHandle) != HAL_OK)
     {
