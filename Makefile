@@ -1,7 +1,12 @@
 # System specific
-VENDOR_ROOT = ./bsp
-CC          = ./toolchain/bin/arm-none-eabi-gcc
-DB          = ./toolchain/bin/arm-none-eabi-gdb
+VENDOR_ROOT = ./bsp/
+TOOLCHAIN_ROOT = ./toolchain/bin/
+
+###############################################################################
+
+# Toolchain
+CC = $(TOOLCHAIN_ROOT)arm-none-eabi-gcc
+DB = $(TOOLCHAIN_ROOT)arm-none-eabi-gdb
 
 # Project sources
 SRC_FILES = $(wildcard src/*.c) $(wildcard src/*/*.c)
@@ -13,18 +18,18 @@ INCLUDES   = -Iinc/
 INCLUDES  += -Iinc/hal/
 
 # Vendor sources
-SRC_FILES += $(VENDOR_ROOT)/Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal.c
-SRC_FILES += $(VENDOR_ROOT)/Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_pwr.c
-SRC_FILES += $(VENDOR_ROOT)/Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_pwr_ex.c
-SRC_FILES += $(VENDOR_ROOT)/Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_rcc.c
-SRC_FILES += $(VENDOR_ROOT)/Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_gpio.c
-SRC_FILES += $(VENDOR_ROOT)/Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_cortex.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_pwr.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_pwr_ex.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_rcc.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_gpio.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_cortex.c
 
 # Vendor includes
-INCLUDES += -I$(VENDOR_ROOT)/Drivers/CMSIS/Core/Include
-INCLUDES += -I$(VENDOR_ROOT)/Drivers/CMSIS/Device/ST/STM32F7xx/Include
-INCLUDES += -I$(VENDOR_ROOT)/Drivers/STM32F7xx_HAl_Driver/Inc
-INCLUDES += -I$(VENDOR_ROOT)/Drivers/BSP/STM32F7xx_Nucleo_144
+INCLUDES += -I$(VENDOR_ROOT)Drivers/CMSIS/Core/Include
+INCLUDES += -I$(VENDOR_ROOT)Drivers/CMSIS/Device/ST/STM32F7xx/Include
+INCLUDES += -I$(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Inc
+INCLUDES += -I$(VENDOR_ROOT)Drivers/BSP/STM32F7xx_Nucleo_144
 
 # Compiler Flags
 CFLAGS  = -g -O0 -Wall -Wextra -Warray-bounds
@@ -51,7 +56,7 @@ ASM_OBJS = $(ASM_FILES:.s=.o)
 OBJS_SRC = $(ASM_OBJS) $(CXX_OBJS)
 OBJS_OBJ = $(addprefix $(BUILD_DIR),$(notdir $(OBJS_SRC)))
 
-.PHONY: clean
+.PHONY: clean debug
 
 all: $(BUILD_DIR) $(TARGET_EXE)
 
