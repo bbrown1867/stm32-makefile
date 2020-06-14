@@ -1,5 +1,5 @@
 # Path you your toolchain installation, leave empty if already in system PATH
-TOOLCHAIN_ROOT = ./toolchain/bin/
+TOOLCHAIN_ROOT = ../bin/gcc-arm-none-eabi-9-2020-q2-update/bin/
 
 # Path to the STM32 codebase, make sure to update the submodule to get the code
 VENDOR_ROOT = ./bsp/
