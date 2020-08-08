@@ -1,7 +1,7 @@
 # stm32-makefile
 
 ## Overview
-This repository contains a blinky project for the STM32 [Nucleo-144 development board](https://www.st.com/en/evaluation-tools/nucleo-f767zi.html) targeting the STM32F767ZI microcontroller. The project uses:
+This repository contains a blinky/button project for the STM32 [Nucleo-144 development board](https://www.st.com/en/evaluation-tools/nucleo-f767zi.html) targeting the STM32F767ZI microcontroller. The project uses:
 * GNU Make (Build System)
 * GNU ARM Embedded Toolchain (Compiler)
 * STM32CubeF7 MCU Firmware Package (BSP/Drivers)

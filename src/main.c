@@ -3,9 +3,11 @@
 #include "stm32f7xx_nucleo_144.h"
 
 static UART_HandleTypeDef UartHandle;
+static EXTI_HandleTypeDef ExtiHandle;
 
 int __io_putchar(int ch);
 int _write(int file,char *ptr, int len);
+static void EXTI15_10_IRQCallback(void);
 static void SystemClock_Config(void);
 static void Error_Handler(void);
 static void CPU_CACHE_Enable(void);
@@ -26,11 +28,38 @@ int main(void)
 
     /* Enable GPIO clock */
     __HAL_RCC_GPIOB_CLK_ENABLE();
+    __HAL_RCC_GPIOC_CLK_ENABLE();
 
     /* Configure LEDs */
     BSP_LED_Init(LED1);
     BSP_LED_Init(LED2);
     BSP_LED_Init(LED3);
+
+    /* Configure user push button */
+    GPIO_InitTypeDef GPIO_InitStruct;
+    GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Pin = GPIO_PIN_13;
+    HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+    /* Configure EXTI to generate interrupt for user push button GPIO */
+    EXTI_ConfigTypeDef EXTI_InitStruct;
+    EXTI_InitStruct.Line = EXTI_LINE_13;
+    EXTI_InitStruct.Mode = EXTI_MODE_INTERRUPT;
+    EXTI_InitStruct.Trigger = EXTI_TRIGGER_RISING;
+    EXTI_InitStruct.GPIOSel = EXTI_GPIOC;
+    if (HAL_EXTI_SetConfigLine(&ExtiHandle, &EXTI_InitStruct) != HAL_OK)
+    {
+        Error_Handler();
+    }
+
+    if (HAL_EXTI_RegisterCallback(&ExtiHandle, HAL_EXTI_COMMON_CB_ID, EXTI15_10_IRQCallback) != HAL_OK)
+    {
+        Error_Handler();
+    }
+
+    /* Enable the relevant EXTI interrupt for user push button GPIO */
+    HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
     /* Configure UART for printf */
     UartHandle.Instance = USART3;
@@ -74,8 +103,17 @@ int _write(int file, char *ptr, int len)
 
 void SysTick_Handler(void)
 {
-    /* TODO: What does this do? Is it necessary? */
     HAL_IncTick();
+}
+
+void EXTI15_10_IRQHandler(void)
+{
+    HAL_EXTI_IRQHandler(&ExtiHandle);
+}
+
+static void EXTI15_10_IRQCallback(void)
+{
+    BSP_LED_Toggle(LED2);
 }
 
 static void SystemClock_Config(void)
