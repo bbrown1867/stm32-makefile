@@ -1,5 +1,5 @@
 # Path you your toolchain installation, leave empty if already in system PATH
-TOOLCHAIN_ROOT = ../bin/gcc-arm-none-eabi-9-2020-q2-update/bin/
+TOOLCHAIN_ROOT = ../../bin/gcc-arm-none-eabi-9-2020-q2-update/bin/
 
 # Path to the STM32 codebase, make sure to update the submodule to get the code
 VENDOR_ROOT = ./bsp/
@@ -27,24 +27,24 @@ INCLUDES  += -I$(INC_DIR)hal/
 
 # Vendor sources
 SRC_FILES += $(VENDOR_ROOT)Drivers/BSP/STM32F7xx_Nucleo_144/stm32f7xx_nucleo_144.c
-SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal.c
-SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_adc.c
-SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_adc_ex.c
-SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_pwr.c
-SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_pwr_ex.c
-SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_rcc.c
-SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_rcc_ex.c
-SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_spi.c
-SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_dma.c
-SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_gpio.c
-SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_uart.c
-SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_cortex.c
-SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Src/stm32f7xx_hal_exti.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc_ex.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_spi.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_uart.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.c
+SRC_FILES += $(VENDOR_ROOT)Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_exti.c
 
 # Vendor includes
 INCLUDES += -I$(VENDOR_ROOT)Drivers/CMSIS/Core/Include
 INCLUDES += -I$(VENDOR_ROOT)Drivers/CMSIS/Device/ST/STM32F7xx/Include
-INCLUDES += -I$(VENDOR_ROOT)Drivers/STM32F7xx_HAl_Driver/Inc
+INCLUDES += -I$(VENDOR_ROOT)Drivers/STM32F7xx_HAL_Driver/Inc
 INCLUDES += -I$(VENDOR_ROOT)Drivers/BSP/STM32F7xx_Nucleo_144
 
 # Compiler Flags
