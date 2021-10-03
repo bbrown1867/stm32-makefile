@@ -17,18 +17,14 @@ int main(void)
     SCB_EnableICache();
     SCB_EnableDCache();
 
+    /* Configure the system clock to 216 MHz */
+    SystemClock_Config();
+
     /* HAL initialization */
     if (HAL_Init() != HAL_OK)
     {
         Error_Handler();
     }
-
-    /* Configure the system clock to 216 MHz */
-    SystemClock_Config();
-
-    /* Enable GPIO clock */
-    __HAL_RCC_GPIOB_CLK_ENABLE();
-    __HAL_RCC_GPIOC_CLK_ENABLE();
 
     /* Configure LEDs */
     BSP_LED_Init(LED1);
@@ -36,6 +32,8 @@ int main(void)
     BSP_LED_Init(LED3);
 
     /* Configure user push button */
+    __HAL_RCC_GPIOC_CLK_ENABLE();
+
     GPIO_InitTypeDef GPIO_InitStruct;
     GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
@@ -79,7 +77,7 @@ int main(void)
     {
         printf("Hello World!\r\n");
         BSP_LED_Toggle(LED1);
-        HAL_Delay(100);
+        HAL_Delay(1000);
     }
 }
 
