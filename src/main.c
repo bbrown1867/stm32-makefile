@@ -10,12 +10,12 @@ int _write(int file,char *ptr, int len);
 static void EXTI15_10_IRQCallback(void);
 static void SystemClock_Config(void);
 static void Error_Handler(void);
-static void CPU_CACHE_Enable(void);
 
 int main(void)
 {
-    /* Enable the CPU cache */
-    CPU_CACHE_Enable();
+    /* Enable the CPU caches */
+    SCB_EnableICache();
+    SCB_EnableDCache();
 
     /* HAL initialization */
     if (HAL_Init() != HAL_OK)
@@ -170,13 +170,4 @@ static void Error_Handler(void)
     {
         ;
     }
-}
-
-static void CPU_CACHE_Enable(void)
-{
-    /* Enable instruction cache */
-    SCB_EnableICache();
-
-    /* Enable data cache */
-    SCB_EnableDCache();
 }
