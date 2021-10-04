@@ -32,13 +32,7 @@ int main(void)
     BSP_LED_Init(LED3);
 
     /* Configure user push button */
-    __HAL_RCC_GPIOC_CLK_ENABLE();
-
-    GPIO_InitTypeDef GPIO_InitStruct;
-    GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Pin = GPIO_PIN_13;
-    HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+    BSP_PB_Init(BUTTON_USER, BUTTON_MODE_EXTI);
 
     /* Configure EXTI to generate interrupt for user push button GPIO */
     EXTI_ConfigTypeDef EXTI_InitStruct;
@@ -55,9 +49,6 @@ int main(void)
     {
         Error_Handler();
     }
-
-    /* Enable the relevant EXTI interrupt for user push button GPIO */
-    HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
     /* Configure UART for printf */
     UartHandle.Instance = USART3;
